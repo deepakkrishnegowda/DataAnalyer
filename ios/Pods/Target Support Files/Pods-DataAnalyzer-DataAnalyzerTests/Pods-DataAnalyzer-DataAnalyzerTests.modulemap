@@ -1,0 +1,6 @@
+module Pods_DataAnalyzer_DataAnalyzerTests {
+  umbrella header "Pods-DataAnalyzer-DataAnalyzerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
