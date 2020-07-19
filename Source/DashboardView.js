@@ -1,15 +1,8 @@
 import React, {Component} from 'react';
-import {Text, View, SafeAreaView, StyleSheet, Dimensions} from 'react-native';
+import {Text, View, SafeAreaView} from 'react-native';
 import {Pages} from 'react-native-pages';
 import DataListView from './DataListView';
-
-const MainContentItem = ({title}) => (
-  <View style={styles.pageContainer}>
-    <View style={styles.page}>
-      <Text>{title}</Text>
-    </View>
-  </View>
-);
+import { PageCell } from './PageCell';
 
 export default class DashboardView extends Component {
   render() {
@@ -29,25 +22,8 @@ export default class DashboardView extends Component {
 
   getMainContents(mainContentsArray) {
     let mainContent = mainContentsArray.map((item, index) => {
-      return <MainContentItem title={item} key={item + index} />;
+      return <PageCell title={item} key={item + index} />;
     });
     return mainContent;
   }
 }
-const styles = StyleSheet.create({
-  pageContainer: {
-    justifyContent: 'center',
-    flex: 1,
-    paddingVertical: 30,
-    marginHorizontal: 10,
-  },
-  page: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ffff',
-    borderRadius: 10,
-    shadowColor: 'black',
-    shadowOpacity: 0.5,
-    shadowOffset: {width: 0, height: 1},
-  },
-});
