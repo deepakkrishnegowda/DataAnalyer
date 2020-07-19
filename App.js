@@ -19,12 +19,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import DashboardView from './Source/DashboardView';
+import DashboardDetails from './Source/DashboardDetails/DashboardDetails';
 const Stack = createStackNavigator();
 
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="DashboardView" component={DashboardView} />
+      <Stack.Screen name="Dashboard" component={DashboardView} />
+      <Stack.Screen name="DashboardDetails" component={DashboardDetails} />
     </Stack.Navigator>
   </NavigationContainer>
 );
