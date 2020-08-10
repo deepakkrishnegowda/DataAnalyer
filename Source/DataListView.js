@@ -9,7 +9,7 @@ export default class DataListView extends Component {
       <View>
         <FlatList
           pagingEnabled={true}
-          numColumns={3}
+          numColumns={1}
           data={this.props.dataItems}
           renderItem={(item) => {
             return (

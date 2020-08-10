@@ -15,18 +15,7 @@ export default class DashboardView extends Component {
   render() {
     return (
       <SafeAreaView style={{flex: 1, backgroundColor: '#e0e0e0'}}>
-        <View style={{flex: 0.3}}>
-          <Pages
-            indicatorColor={'#000'}
-            onScrollEnd={(activeIndex) => {
-              if (activeIndex != this.state.currentIndex) {
-                this.setState({currentIndex: activeIndex});
-              }
-            }}>
-            {this.getMainContents(['CID', 'KM', 'People'])}
-          </Pages>
-        </View>
-        <View style={{flex: 0.7}}>
+        <View style={{flex: 1}}>
           <DataListView
             dataItems={this.getDataForCurrentIndex(this.state.currentIndex)}
             onPress={(item) => {

@@ -7,7 +7,8 @@ export default class FlatListCell extends Component {
       <View style={styles.container}>
         <View
           style={styles.childItem}>
-          <Text style={{fontSize: 20, textAlign: 'center'}}>
+          <View style = {{width: 40, height: 40, borderWidth: 1, borderColor:'#4194d1'}}/>
+          <Text style={styles.textStyle}>
             {this.props.title}
           </Text>
         </View>
@@ -18,19 +19,20 @@ export default class FlatListCell extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width / 3,
-    height: 180,
     justifyContent: 'center',
-    padding: 8,
-    borderRadius: 10,
+    paddingVertical: 2,
   },
   childItem: {
+    flexDirection: 'row',
     flex: 1,
-    justifyContent: 'center',
-    borderRadius: 8,
+    alignContent:'flex-start',
     backgroundColor: '#fff',
-    shadowColor: 'black',
-    shadowOpacity: 0.5,
-    shadowOffset: {width: 0, height: 1},
+    padding: 8,
+  },
+  textStyle: {
+    fontSize: 20,
+    fontWeight:'400',
+    paddingHorizontal: 16, 
+    color: '#2e66a0'
   }
 });
