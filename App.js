@@ -18,35 +18,41 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-import DashboardView from './Source/DashboardView';
-import DashboardDetails from './Source/DashboardDetails/DashboardDetails';
-const Stack = createStackNavigator();
-
+import HomeView from './Source/HomeView';
+import DashboardView from './Source/Dashboard/DashboardView';
+import SearchView from './Source/Search/SearchView';
+const Tab = createBottomTabNavigator();
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Dashboard"
-        component={DashboardView}
-        options={{
-          title: 'Hubs',
-          headerLeft: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Menu"
-              color="#fff"
-            />
-          ),
-          headerStyle: {backgroundColor: '#4194d1'},
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-      />
-      <Stack.Screen name="DashboardDetails" component={DashboardDetails} />
-    </Stack.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Search') {
+            iconName = 'search';
+          } else if (route.name === 'Profile') {
+            iconName = 'user';
+          } else if (route.name === 'Dashboard') {
+            iconName = 'th-large';
+          } 
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#005A8B',
+        inactiveTintColor: 'gray',
+      }}>
+      <Tab.Screen name="Home" component={HomeView} />
+      <Tab.Screen name="Dashboard" component={DashboardView} />
+      <Tab.Screen name="Search" component={SearchView} />
+      <Tab.Screen name="Profile" component={DashboardView} />
+    </Tab.Navigator>
   </NavigationContainer>
 );
 export default App;
